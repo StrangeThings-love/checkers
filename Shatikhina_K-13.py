@@ -34,7 +34,7 @@ def new_game():#начинаем новую игру
           [0,1,0,1,0,1,0,1],
           [1,0,1,0,1,0,1,0]]
 
-def vivod(x_poz_1,y_poz_1,x_poz_2,y_poz_2):#рисуем игровое поле
+def conclusion(x_poz_1,y_poz_1,x_poz_2,y_poz_2):#рисуем игровое поле
     global pawns
     global field
     global kr_frame,zel_frame
