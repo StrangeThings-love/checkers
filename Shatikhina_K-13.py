@@ -3,25 +3,25 @@ import time
 import copy
 from tkinter import PhotoImage, Tk, Canvas, NW, messagebox, mainloop
 
-gl_window=Tk()#создаём окно
-gl_window.title('Шашки')#заголовок окна
+gl_window=Tk()    #создаём окно
+gl_window.title('Шашки')    #заголовок окна
 board=Canvas(gl_window, width=800,height=800,bg='#FFFFFF')
 board.pack()
 
-n2_list=()#конечный список ходов компьютера
-ur=3#количество предсказываемых компьютером ходов
-k_rez=0#!!!
+n2_list=()    #конечный список ходов компьютера
+ur=3          #количество предсказываемых компьютером ходов
+k_rez=0
 o_rez=0
-poz1_x=-1#клетка не задана
-f_hi=True#определение хода игрока(да)
+poz1_x=-1     #клетка не задана
+f_hi=True     #определение хода игрока(да)
 
-def pawn_images():#загружаем изображения пешек
+def pawn_images():    #загружаем изображения пешек
     global pawns
-    i1=PhotoImage(file="res\\1b.gif")
-    i2=PhotoImage(file="res\\1bk.gif")
-    i3=PhotoImage(file="res\\1h.gif")
-    i4=PhotoImage(file="res\\1hk.gif")
-    pawns=[0,i1,i2,i3,i4]
+    i1 = PhotoImage(file="res\\1b.gif")
+    i2 = PhotoImage(file="res\\1bk.gif")
+    i3 = PhotoImage(file="res\\1h.gif")
+    i4 = PhotoImage(file="res\\1hk.gif")
+    pawns = [0,i1,i2,i3,i4]
 
 def new_game():#начинаем новую игру
     global field
@@ -34,7 +34,7 @@ def new_game():#начинаем новую игру
           [0,1,0,1,0,1,0,1],
           [1,0,1,0,1,0,1,0]]
 
-def conclusion(x_poz_1,y_poz_1,x_poz_2,y_poz_2):#рисуем игровое поле
+def conclusion(x_poz_1,y_poz_1,x_poz_2,y_poz_2):    #рисуем игровое поле
     global pawns
     global field
     global kr_frame,zel_frame
@@ -79,7 +79,7 @@ def conclusion(x_poz_1,y_poz_1,x_poz_2,y_poz_2):#рисуем игровое п�
             board.update()   #обновление
             time.sleep(0.01)
 
-def soobseniemessage(s):
+def message(s):
     global f_hi
     z='Игра завершена'
     if s==1:
