@@ -5,15 +5,15 @@ from tkinter import PhotoImage, Tk, Canvas, NW, messagebox, mainloop
 
 gl_window=Tk()    #создаём окно
 gl_window.title('Шашки')    #заголовок окна
-board=Canvas(gl_window, width=800,height=800,bg='#FFFFFF')
+board = Canvas(gl_window, width=800,height=800,bg='#FFFFFF')
 board.pack()
 
-n2_list=()    #конечный список ходов компьютера
-ur=3          #количество предсказываемых компьютером ходов
-k_rez=0
-o_rez=0
-poz1_x=-1     #клетка не задана
-f_hi=True     #определение хода игрока(да)
+n2_list = ()    #конечный список ходов компьютера
+ur = 3          #количество предсказываемых компьютером ходов
+k_rez = 0
+o_rez = 0
+poz1_x = -1     #клетка не задана
+f_h i= True     #определение хода игрока(да)
 
 def pawn_images():    #загружаем изображения пешек
     global pawns
@@ -25,49 +25,49 @@ def pawn_images():    #загружаем изображения пешек
 
 def new_game():#начинаем новую игру
     global field
-    field=[[0,3,0,3,0,3,0,3],
-          [3,0,3,0,3,0,3,0],
-          [0,3,0,3,0,3,0,3],
-          [0,0,0,0,0,0,0,0],
-          [0,0,0,0,0,0,0,0],
-          [1,0,1,0,1,0,1,0],
-          [0,1,0,1,0,1,0,1],
-          [1,0,1,0,1,0,1,0]]
+    field = [[0,3,0,3,0,3,0,3],
+            [3,0,3,0,3,0,3,0],
+            [0,3,0,3,0,3,0,3],
+            [0,0,0,0,0,0,0,0],
+            [0,0,0,0,0,0,0,0],
+            [1,0,1,0,1,0,1,0],
+            [0,1,0,1,0,1,0,1],
+            [1,0,1,0,1,0,1,0]]
 
 def conclusion(x_poz_1,y_poz_1,x_poz_2,y_poz_2):    #рисуем игровое поле
     global pawns
     global field
     global kr_frame,zel_frame
-    k=100
-    x=0
+    k = 100
+    x = 0
     board.delete('all')
     kr_frame = board.create_rectangle(-5, -5, -5, -5,outline="red",width=5)
     zel_frame = board.create_rectangle(-5, -5, -5, -5,outline="green",width=5)
 
     while x<8*k:  #рисуем доску
-        y=1*k
-        while y<8*k:
+        y = 1*k
+        while y < 8*k:
             board.create_rectangle(x, y, x+k, y+k,fill="black")
-            y+=2*k
-        x+=2*k
-    x=1*k
-    while x<8*k:  #рисуем доску
-        y=0
-        while y<8*k:
+            y+ = 2*k
+        x+ = 2*k
+    x = 1*k
+    while x < 8*k:  #рисуем доску
+        y = 0
+        while y < 8*k:
             board.create_rectangle(x, y, x+k, y+k,fill="black")
-            y+=2*k
-        x+=2*k
+            y+ = 2*k
+        x+ = 2*k
     
     for y in range(8):  #рисуем стоячие пешки
         for x in range(8):
-            z=field[y][x]
+            z = field[y][x]
             if z:  
                 if (x_poz_1,y_poz_1)!=(x,y):   #стоячие пешки
                     board.create_image(x*k,y*k, anchor=NW, image=pawns[z]) 
                     
     #рисуем активную пешку  
     
-    z=field[y_poz_1][x_poz_1]
+    z = field[y_poz_1][x_poz_1]
     if z:
         board.create_image(x_poz_1*k,y_poz_1*k, anchor=NW, image = pawns[z],tag='ani')
     #вычисление коэф. для анимации
